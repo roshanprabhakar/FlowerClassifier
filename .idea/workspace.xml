@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe7d3a91-a775-4d45-97aa-019c6456cd4a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PerceptronPractice/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PerceptronPractice/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlowerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlowerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Perceptron.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Perceptron.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -17,35 +21,36 @@
     <session id="1913103575">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="2" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="3" />
+          <entry key="java" value="4" />
           <entry key="kt" value="1" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="3" />
+          <entry key="JAVA" value="4" />
           <entry key="Kotlin" value="1" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2623" />
-          <entry key="txt" value="5" />
+          <entry key="java" value="5272" />
+          <entry key="txt" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2623" />
-          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="JAVA" value="5272" />
+          <entry key="PLAIN_TEXT" value="27" />
         </counts>
       </usages-collector>
     </session>
@@ -55,26 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="14" selection-start-column="14" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FlowerData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DataLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+            <state relative-caret-position="210">
+              <caret line="14" column="65" lean-forward="true" selection-start-line="14" selection-start-column="65" selection-end-line="14" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,23 +70,68 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Perceptron.java">
+        <entry file="file://$PROJECT_DIR$/src/FlowerData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+            <state relative-caret-position="492">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
               <folding>
-                <element signature="e#356#357#0" expanded="true" />
-                <element signature="e#395#396#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1428#1429#0" expanded="true" />
+                <element signature="e#1463#1464#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DataLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DataParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="e#651#652#0" expanded="true" />
+                <element signature="e#680#681#0" expanded="true" />
+                <element signature="e#726#727#0" expanded="true" />
+                <element signature="e#759#760#0" expanded="true" />
+                <element signature="e#819#820#0" expanded="true" />
+                <element signature="e#851#852#0" expanded="true" />
+                <element signature="e#904#905#0" expanded="true" />
+                <element signature="e#933#934#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Perceptron.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data.csv">
-          <provider selected="true" editor-type-id="csv-text-editor" />
           <provider editor-type-id="csv-table-editor">
             <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="275">
+              <caret line="123" column="30" lean-forward="true" selection-start-line="123" selection-start-column="30" selection-end-line="123" selection-end-column="30" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -119,10 +151,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Data.txt" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/FlowerData.java" />
         <option value="$PROJECT_DIR$/src/DataLoader.java" />
+        <option value="$PROJECT_DIR$/data.csv" />
         <option value="$PROJECT_DIR$/src/Perceptron.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/DataParser.java" />
+        <option value="$PROJECT_DIR$/src/FlowerData.java" />
       </list>
     </option>
   </component>
@@ -132,7 +166,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
@@ -166,7 +200,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/roshan/IdeaProjects/PerceptronPractice/src/Main.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557034558054" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557100076016" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -208,18 +242,27 @@
       <option name="presentableId" value="Default" />
       <updated>1557025670437</updated>
       <workItem from="1557025672225" duration="2896000" />
-      <workItem from="1557034304728" duration="846000" />
+      <workItem from="1557034304728" duration="1460000" />
+      <workItem from="1557085230945" duration="4042000" />
     </task>
+    <task id="LOCAL-00001" summary="implemented perceptron">
+      <created>1557035165127</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1557035165128</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3742000" />
+    <option name="totallyTimeSpent" value="8398000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15450644" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13205537" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -228,7 +271,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.18193069" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.18117408" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -291,52 +334,81 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="implemented perceptron" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented perceptron" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/Downloads/Heart-Rate-Ometer-master/heartrateometer/src/main/kotlin/net.kibotu.heartrateometer/ImageProcessing.kt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/data.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="275">
+          <caret line="123" column="30" lean-forward="true" selection-start-line="123" selection-start-column="30" selection-end-line="123" selection-end-column="30" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Perceptron.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="31" column="30" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="14" selection-start-column="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FlowerData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="62" selection-start-line="34" selection-start-column="62" selection-end-line="34" selection-end-column="62" />
+        <state relative-caret-position="210">
+          <caret line="14" column="65" lean-forward="true" selection-start-line="14" selection-start-column="65" selection-end-line="14" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data.csv">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+    <entry file="file://$PROJECT_DIR$/src/DataParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#651#652#0" expanded="true" />
+            <element signature="e#680#681#0" expanded="true" />
+            <element signature="e#726#727#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+            <element signature="e#851#852#0" expanded="true" />
+            <element signature="e#904#905#0" expanded="true" />
+            <element signature="e#933#934#0" expanded="true" />
+          </folding>
         </state>
       </provider>
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Perceptron.java">
+    <entry file="file://$PROJECT_DIR$/src/DataLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+        <state relative-caret-position="390">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
           <folding>
-            <element signature="e#356#357#0" expanded="true" />
-            <element signature="e#395#396#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FlowerData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1428#1429#0" expanded="true" />
+            <element signature="e#1463#1464#0" expanded="true" />
           </folding>
         </state>
       </provider>

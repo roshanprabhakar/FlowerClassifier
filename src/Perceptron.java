@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Perceptron {
 
     private String identity; //will classify for identity
@@ -8,11 +10,13 @@ public class Perceptron {
     private double[] weights;
 
     //returns boolean value for whether or not a certain flower, eventually link to a bunch of perceptrons
-    public Perceptron(String identity) {
+    public Perceptron(String identity, int vectorLength) {
         this.identity = identity;
+        weights = new double[vectorLength];
     }
 
     public void train(double[] input) {
+
 
         //change the weights;
         //change the threshhold;
@@ -25,6 +29,7 @@ public class Perceptron {
             weights[i] += error * learningRate * input[i];
         }
 
+        //adjust threshhold (vertical translation on 2D graph)
         threshhold += error * learningRate;
     }
 
@@ -48,8 +53,9 @@ public class Perceptron {
     }
 
     public int getCorrectGuess(String label) {
-        if (label.equals(this.identity)) return 1;
+        if (label.equals(identity)) return 1;
         return 0;
     }
 
+    public String getIdentity() {return identity;}
 }
