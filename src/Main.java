@@ -30,6 +30,7 @@ public class Main {
         FlowerData virginicaTest = new FlowerData("6.7,3.3,5.7,2.1,Iris-virginica");
         FlowerData setosaTest = new FlowerData("4.8,3.4,1.9,0.2,Iris-setosa");
 
-        System.out.println(perceptron.guess(setosaTest));
+        System.out.println();
+        System.out.println("prediction: " + perceptron.guess(setosaTest));
     }
 }

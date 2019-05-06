@@ -29,6 +29,7 @@ public class Perceptron {
         if (guessIsCorrect(guess(input), input)) {
             System.out.println("guess is correct");
             System.out.println("weights are: " + Arrays.toString(weights));
+            System.out.println("Threshhold is: " + threshhold);
             return;
         }
         System.out.println("... guess is incorrect");
