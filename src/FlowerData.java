@@ -73,4 +73,6 @@ public class FlowerData {
     }
 
     public String getIdentity() {return identity;}
+
+    public String toString() {return features.toString();}
 }

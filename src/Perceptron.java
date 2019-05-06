@@ -15,32 +15,40 @@ public class Perceptron {
         weights = new double[vectorLength];
     }
 
-    public void train(double[] input) {
+    public void train(FlowerData input) {
 
-
+        System.out.println("-------------------");
+        System.out.println("training for input: " + Arrays.toString(input.getSpecifiedVector(Main.attributes)));
         //change the weights;
         //change the threshhold;
 
         //error = guess - actual, get direction of error
+        System.out.println("identity of input: " + identity);
+        System.out.println("call to getCorrectGuess(above): " + getCorrectGuess(input.getIdentity()));
+
         int error = guess(input) - getCorrectGuess(identity);
+        System.out.println("error: " + error);
 
         //adjust weights
         for (int i = 0; i < weights.length; i++) {
-            weights[i] += error * learningRate * input[i];
+            weights[i] += error * learningRate * input.getSpecifiedVector(Main.attributes)[i];
+            System.out.println("weights: " + Arrays.toString(weights));
         }
 
         //adjust threshhold (vertical translation on 2D graph)
         threshhold += error * learningRate;
+        System.out.println("Threshhold: " + threshhold);
+        System.out.println("-------------------");
     }
 
     //guess what feature vector could describe given current weights and threshhold
     //this method is the classifying method
-    public int guess(double[] trainingPoint) {
+    public int guess(FlowerData input) {
 
         double sum = 0;
 
-        for (int i = 0; i < trainingPoint.length; i++) {
-            sum += trainingPoint[i] * weights[i];
+        for (int i = 0; i < input.getSpecifiedVector(Main.attributes).length; i++) {
+            sum += input.getSpecifiedVector(Main.attributes)[i] * weights[i];
         }
 
         return activation(sum);
