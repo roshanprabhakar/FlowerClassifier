@@ -9,6 +9,8 @@ public class Perceptron {
 
     private double[] weights;
 
+    private String old = ""; //to change
+
     //returns boolean value for whether or not a certain flower, eventually link to a bunch of perceptrons
     public Perceptron(String identity, int vectorLength) {
         this.identity = identity;
@@ -23,20 +25,28 @@ public class Perceptron {
         //change the threshhold;
 
         //error = guess - actual, get direction of error
-        System.out.println("identity of input: " + identity);
+        System.out.println("identity of input: " + input.getIdentity());
         System.out.println("call to getCorrectGuess(above): " + getCorrectGuess(input.getIdentity()));
+
+        System.out.println("guess: " + guess(input));
 
         int error = guess(input) - getCorrectGuess(identity);
         System.out.println("error: " + error);
 
+        System.out.println("weights start as: " + Arrays.toString(weights));
         //adjust weights
         for (int i = 0; i < weights.length; i++) {
-            weights[i] += error * learningRate * input.getSpecifiedVector(Main.attributes)[i];
+            weights[i] -= error * learningRate * input.getSpecifiedVector(Main.attributes)[i];
             System.out.println("weights: " + Arrays.toString(weights));
         }
 
+        if (!input.getIdentity().equals(old)) {
+            old = input.getIdentity();
+            System.out.println(old);
+        }
+
         //adjust threshhold (vertical translation on 2D graph)
-        threshhold += error * learningRate;
+        threshhold -= error * learningRate;
         System.out.println("Threshhold: " + threshhold);
         System.out.println("-------------------");
     }
