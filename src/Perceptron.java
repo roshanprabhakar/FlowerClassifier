@@ -24,19 +24,30 @@ public class Perceptron {
         //change the weights;
         //change the threshhold;
 
+        //check if is correct, if so exit call
+        System.out.println("checking if guess is correct...");
+        if (guessIsCorrect(guess(input), input)) {
+            System.out.println("guess is correct");
+            System.out.println("weights are: " + Arrays.toString(weights));
+            return;
+        }
+        System.out.println("... guess is incorrect");
+
         //error = guess - actual, get direction of error
         System.out.println("identity of input: " + input.getIdentity());
         System.out.println("call to getCorrectGuess(above): " + getCorrectGuess(input.getIdentity()));
 
         System.out.println("guess: " + guess(input));
 
-        int error = guess(input) - getCorrectGuess(identity);
+        int error = getCorrectGuess(input.getIdentity()) - guess(input); //bug: error is zero if getCorrectGuess(identity) is 0 and guess(input) is 1
+        System.out.println("error calculation: " + getCorrectGuess(input.getIdentity()) + " - " + guess(input));
+
         System.out.println("error: " + error);
 
         System.out.println("weights start as: " + Arrays.toString(weights));
         //adjust weights
         for (int i = 0; i < weights.length; i++) {
-            weights[i] -= error * learningRate * input.getSpecifiedVector(Main.attributes)[i];
+            weights[i] += error * learningRate * input.getSpecifiedVector(Main.attributes)[i];
             System.out.println("weights: " + Arrays.toString(weights));
         }
 
@@ -46,7 +57,7 @@ public class Perceptron {
         }
 
         //adjust threshhold (vertical translation on 2D graph)
-        threshhold -= error * learningRate;
+        threshhold += error * learningRate;
         System.out.println("Threshhold: " + threshhold);
         System.out.println("-------------------");
     }
@@ -73,6 +84,10 @@ public class Perceptron {
     public int getCorrectGuess(String label) {
         if (label.equals(identity)) return 1;
         return 0;
+    }
+
+    public boolean guessIsCorrect(int guess, FlowerData data) {
+        return guess == getCorrectGuess(data.getIdentity());
     }
 
     public String getIdentity() {return identity;}

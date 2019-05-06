@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Main {
 
@@ -13,6 +14,8 @@ public class Main {
         loader.loadData();
 
         ArrayList<FlowerData> trainingData = loader.getData();
+        Collections.shuffle(trainingData);
+
         Perceptron perceptron = new Perceptron(parsingTarget, 2);
 
         int line = 1;
@@ -24,9 +27,9 @@ public class Main {
 
 //        perceptron.train(trainingData.get(0).getSpecifiedVector(attributes));
 
-        FlowerData virginicaTest = new FlowerData("6.7,3.3,5.7,2.1,Iris-virginica"); //is virginica
-        FlowerData setosaTest = new FlowerData("4.8,3.4,1.9,0.2,Iris-setosa"); //is setosa
+        FlowerData virginicaTest = new FlowerData("6.7,3.3,5.7,2.1,Iris-virginica");
+        FlowerData setosaTest = new FlowerData("4.8,3.4,1.9,0.2,Iris-setosa");
 
-        System.out.println(perceptron.guess(virginicaTest));
+        System.out.println(perceptron.guess(setosaTest));
     }
 }
