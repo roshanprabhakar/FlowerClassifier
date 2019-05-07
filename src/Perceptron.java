@@ -42,7 +42,7 @@ public class Perceptron {
 
         System.out.println("guess: " + guess(input));
 
-        int error = getCorrectGuess(input.getIdentity()) - guess(input); //bug: error is zero if getCorrectGuess(identity) is 0 and guess(input) is 1
+        int error = getCorrectGuess(input.getIdentity()) - guess(input);
         System.out.println("error calculation: " + getCorrectGuess(input.getIdentity()) + " - " + guess(input));
 
         System.out.println("error: " + error);
