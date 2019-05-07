@@ -7,7 +7,6 @@ public class Main {
     public static String[] attributes = new String[]{"sepal_length", "sepal_width"};
     private static String parsingTarget = "Iris-setosa";
 
-    //end weights: 0.2550000037997961, 0.1750000026077032
     public static void main(String[] args) {
 
         DataLoader loader = new DataLoader("data.csv");
@@ -31,6 +30,30 @@ public class Main {
         FlowerData setosaTest = new FlowerData("4.8,3.4,1.9,0.2,Iris-setosa");
 
         System.out.println();
-        System.out.println("prediction: " + perceptron.guess(setosaTest));
+        System.out.println("prediction: " + perceptron.guess(virginicaTest));
+    }
+
+    private void shuffle(ArrayList<Object> list) {
+        ArrayList<Integer> remainingIndexes = getOrderedList(list.size());
+        int indexToSwap;
+        for (int i = 0; i < list.size(); i++) {
+            indexToSwap = remainingIndexes.get((int) (Math.random() * remainingIndexes.size()));
+            swap(i, indexToSwap, list);
+            remainingIndexes.remove(indexToSwap);
+        }
+    }
+
+    private ArrayList<Integer> getOrderedList(int size) {
+        ArrayList<Integer> out = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            out.add(size);
+        }
+        return out;
+    }
+
+    private void swap(int index1, int index2, ArrayList<Object> list) {
+        Object temp = list.get(index1);
+        list.set(index1, list.get(index2));
+        list.set(index2, temp);
     }
 }

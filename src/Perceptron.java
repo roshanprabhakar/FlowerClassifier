@@ -17,6 +17,7 @@ public class Perceptron {
         weights = new double[vectorLength];
     }
 
+    //TODO currently (as shown by virginica) the change to threshhold is incorrect
     public void train(FlowerData input) {
 
         System.out.println("-------------------");
@@ -30,11 +31,12 @@ public class Perceptron {
             System.out.println("guess is correct");
             System.out.println("weights are: " + Arrays.toString(weights));
             System.out.println("Threshhold is: " + threshhold);
+            System.out.println(weights[0] + "x + " + weights[1] + "y + " + threshhold + " = 0");
             return;
         }
         System.out.println("... guess is incorrect");
 
-        //error = guess - actual, get direction of error
+//        error = guess - actual, get direction of error
         System.out.println("identity of input: " + input.getIdentity());
         System.out.println("call to getCorrectGuess(above): " + getCorrectGuess(input.getIdentity()));
 
@@ -45,8 +47,8 @@ public class Perceptron {
 
         System.out.println("error: " + error);
 
-        System.out.println("weights start as: " + Arrays.toString(weights));
         //adjust weights
+        System.out.println("weights start as: " + Arrays.toString(weights));
         for (int i = 0; i < weights.length; i++) {
             weights[i] += error * learningRate * input.getSpecifiedVector(Main.attributes)[i];
             System.out.println("weights: " + Arrays.toString(weights));
@@ -59,7 +61,10 @@ public class Perceptron {
 
         //adjust threshhold (vertical translation on 2D graph)
         threshhold += error * learningRate;
+
         System.out.println("Threshhold: " + threshhold);
+        System.out.println("generated linear seperation model: ");
+        System.out.println(weights[0] + "x + " + weights[1] + "y + " + threshhold + " = 0");
         System.out.println("-------------------");
     }
 
