@@ -27,7 +27,10 @@ public class Perceptron {
 
         //check if is correct, if so exit call
         System.out.println("checking if guess is correct...");
-        if (guessIsCorrect(guess(input), input)) {
+
+        int guess = guess(input) > 0.5 ? 1 : 0;
+
+        if (guess > 0.5) {
             System.out.println("guess is correct");
             System.out.println("weights are: " + Arrays.toString(weights));
             System.out.println("Threshhold is: " + threshhold);
@@ -42,7 +45,7 @@ public class Perceptron {
 
         System.out.println("guess: " + guess(input));
 
-        int error = getCorrectGuess(input.getIdentity()) - guess(input);
+        float error = getCorrectGuess(input.getIdentity()) - guess(input);
         System.out.println("error calculation: " + getCorrectGuess(input.getIdentity()) + " - " + guess(input));
 
         System.out.println("error: " + error);
@@ -70,9 +73,9 @@ public class Perceptron {
 
     //guess what feature vector could describe given current weights and threshhold
     //this method is the classifying method
-    public int guess(FlowerData input) {
+    public float guess(FlowerData input) {
 
-        double sum = 0;
+        float sum = 0;
 
         for (int i = 0; i < input.getSpecifiedVector(Main.attributes).length; i++) {
             sum += input.getSpecifiedVector(Main.attributes)[i] * weights[i];
@@ -81,10 +84,14 @@ public class Perceptron {
         return activation(sum);
 
     }
-
-    public int activation(double sum) {
-        if (sum > threshhold) return 1;
-        return 0;
+//
+//    public int activation(double sum) {
+//        if (sum > threshhold) return 1;
+//        return 0;
+//    }
+//
+    public float activation(float sum) {
+        return (float) (1.0 / (1 + Math.exp(-sum)));
     }
 
     public int getCorrectGuess(String label) {
@@ -96,5 +103,7 @@ public class Perceptron {
         return guess == getCorrectGuess(data.getIdentity());
     }
 
-    public String getIdentity() {return identity;}
+    public String getIdentity() {
+        return identity;
+    }
 }

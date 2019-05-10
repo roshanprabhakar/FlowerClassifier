@@ -18,10 +18,13 @@ public class Main {
         Perceptron perceptron = new Perceptron(parsingTarget, 2);
 
         int line = 1;
-        for (FlowerData data : trainingData) {
+        for (int i = 0; i < 100; i++) {
+            Collections.shuffle(trainingData);
+            for (FlowerData data : trainingData) {
 //            System.out.println("line: " + line);
-            perceptron.train(data);
-            line++;
+                perceptron.train(data);
+                line++;
+            }
         }
 
 //        perceptron.train(trainingData.get(0).getSpecifiedVector(attributes));
@@ -30,7 +33,7 @@ public class Main {
         FlowerData setosaTest = new FlowerData("4.8,3.4,1.9,0.2,Iris-setosa");
 
         System.out.println();
-        System.out.println("prediction: " + perceptron.guess(virginicaTest));
+        System.out.println("prediction: " + perceptron.guess(setosaTest));
     }
 
     private void shuffle(ArrayList<Object> list) {
