@@ -13,9 +13,11 @@ public class DataLoader {
     public DataLoader(String filepath) {
         input = new File(filepath);
         data = new ArrayList<>();
+
+        loadData();
     }
 
-    public void loadData() {
+    private void loadData() {
 
         try {
 
