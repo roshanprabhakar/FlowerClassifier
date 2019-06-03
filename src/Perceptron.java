@@ -58,7 +58,7 @@ public class Perceptron {
         for (int i = 2; i < 4; i++) { //the quadratic weights
             weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i - 2], 2);
         }
-        for (int i = 4; i < weights.length) { //the cubic weights
+        for (int i = 4; i < weights.length; i++) { //the cubic weights
             weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i - 4], 3);
         }
 
