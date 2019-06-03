@@ -4,7 +4,7 @@ import java.util.Collections;
 
 public class Main {
 
-    private static String parsingTarget = "Iris-virginica";
+    private static String parsingTarget = "Iris-versicolor";
     private static double percentTraining = 0.9;
 
     public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class Main {
 
         String[] featureVector = new String[]{"sepal_length", "sepal_width"};
 
-        Perceptron slp = new Perceptron(parsingTarget, featureVector).setMaxEpochs(50000);
+        Perceptron slp = new Perceptron(parsingTarget, featureVector).setMaxEpochs(500000);
 
         slp.train(trainingData);
 
