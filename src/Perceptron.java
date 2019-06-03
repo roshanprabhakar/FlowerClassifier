@@ -15,12 +15,27 @@ public class Perceptron {
 
     private double totalError = 0;
 
-
+    //Perceptron for quadratic separation
     //returns boolean value for whether or not a certain flower, eventually link to a bunch of perceptrons
     public Perceptron(String identity, String[] featureVector) {
         this.identity = identity;
         this.featureVector = featureVector;
-        weights = new double[featureVector.length];
+        weights = new double[featureVector.length * 3]; //2 for each feature: 1 for normal 1 for squared
+    }
+
+    public void train(ArrayList<FlowerData> trainingData) {
+
+        for (int i = 0; i < maxEpochs; i++) {
+            for (FlowerData data : trainingData) {
+                train(data);
+            }
+            Collections.shuffle(trainingData);
+        }
+
+        System.out.println("generated linear separation model: ");
+        System.out.println(weights[0] + "x + " + weights[1] + "y + " + weights[2] + "x^2 + " + weights[3] + "y^2 + " + weights[4] + "x^3 + " + weights[5] + "y^3 + " + threshold + " = 0");
+        System.out.println("-------------------");
+        System.out.println();
     }
 
     private void train(FlowerData input) {
@@ -37,34 +52,28 @@ public class Perceptron {
         totalError += error;
 
         //adjust weights
-        for (int i = 0; i < weights.length; i++) {
+        for (int i = 0; i < 2; i++) { //the linear weights
             weights[i] += error * learningRate * input.getSpecifiedVector(featureVector)[i];
         }
-    }
-
-    public void train(ArrayList<FlowerData> trainingData) {
-
-        for (int i = 0; i < maxEpochs; i++) {
-            for (FlowerData data : trainingData) {
-                train(data);
-            }
-            Collections.shuffle(trainingData);
+        for (int i = 2; i < 4; i++) { //the quadratic weights
+            weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i - 2], 2);
+        }
+        for (int i = 4; i < weights.length) { //the cubic weights
+            weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i - 4], 3);
         }
 
-        System.out.println("generated linear separation model: ");
-        System.out.println(weights[0] + "x + " + weights[1] + "y + " + threshold + " = 0");
-        System.out.println("-------------------");
-        System.out.println();
     }
 
-    //guess what feature vector could describe given current weights and threshhold
+    //guess what feature vector could describe given current weights and threshold
     //this method is the classifying method
     public int guess(FlowerData input) {
 
         double sum = 0;
 
-        for (int i = 0; i < input.getSpecifiedVector(featureVector).length; i++) {
-            sum += input.getSpecifiedVector(featureVector)[i] * weights[i];
+        for (int i = 0; i < 2; i++) {
+            sum += input.getSpecifiedVector(featureVector)[i] * weights[i]; //linear sum
+            sum += Math.pow(input.getSpecifiedVector(featureVector)[i], 2) * weights[i + 2]; //quadratic sum
+            sum += Math.pow(input.getSpecifiedVector(featureVector)[i], 3) * weights[i + 4]; //cubic sum
         }
 
         return activation(sum);

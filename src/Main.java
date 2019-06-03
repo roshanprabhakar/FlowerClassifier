@@ -4,8 +4,8 @@ import java.util.Collections;
 
 public class Main {
 
-    private static String parsingTarget = "Iris-setosa";
-    private static double percentTraining = 0.5;
+    private static String parsingTarget = "Iris-virginica";
+    private static double percentTraining = 0.9;
 
     public static void main(String[] args) {
 
