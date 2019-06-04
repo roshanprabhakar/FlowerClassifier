@@ -13,14 +13,15 @@ public class Perceptron {
     private double[] weights;
     private String[] featureVector;
 
-    private double totalError = 0;
+    private int power;
 
     //Perceptron for quadratic separation
     //returns boolean value for whether or not a certain flower, eventually link to a bunch of perceptrons
-    public Perceptron(String identity, String[] featureVector) {
+    public Perceptron(String identity, String[] featureVector, int power) {
         this.identity = identity;
         this.featureVector = featureVector;
-        weights = new double[featureVector.length * 3]; //2 for each feature: 1 for normal 1 for squared
+        this.power = power;
+        weights = new double[featureVector.length * power]; //2 for each feature: 1 for normal 1 for squared
     }
 
     public void train(ArrayList<FlowerData> trainingData) {
@@ -49,11 +50,10 @@ public class Perceptron {
         }
 
         int error = getCorrectGuess(input.getIdentity()) - guess(input);
-        totalError += error;
 
-        //adjust weights
+//        //adjust weights
         for (int i = 0; i < 2; i++) { //the linear weights
-            weights[i] += error * learningRate * input.getSpecifiedVector(featureVector)[i];
+            weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i - 0], 1);
         }
         for (int i = 2; i < 4; i++) { //the quadratic weights
             weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i - 2], 2);
@@ -61,6 +61,21 @@ public class Perceptron {
         for (int i = 4; i < weights.length; i++) { //the cubic weights
             weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i - 4], 3);
         }
+
+
+        //adjust generalized weights (needs to be generalized)
+//        for (int i = 0; i < power; i++) {
+//            int counter = 0;
+//            int pow = 1;
+//            for (int j = 0; j < weights.length; i++) {
+//                weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(
+//                        featureVector)[i - (featureVector.length * pow - featureVector.length)], pow);
+//                counter++;
+//                if (counter == featureVector.length) {
+//                    pow++;
+//                }
+//            }
+//        }
 
     }
 
@@ -70,10 +85,17 @@ public class Perceptron {
 
         double sum = 0;
 
-        for (int i = 0; i < 2; i++) {
-            sum += input.getSpecifiedVector(featureVector)[i] * weights[i]; //linear sum
-            sum += Math.pow(input.getSpecifiedVector(featureVector)[i], 2) * weights[i + 2]; //quadratic sum
-            sum += Math.pow(input.getSpecifiedVector(featureVector)[i], 3) * weights[i + 4]; //cubic sum
+//        for (int i = 0; i < 2; i++) {
+//            sum += Math.pow(input.getSpecifiedVector(featureVector)[i], 1) * weights[i + 0]; //linear sum
+//            sum += Math.pow(input.getSpecifiedVector(featureVector)[i], 2) * weights[i + 2]; //quadratic sum
+//            sum += Math.pow(input.getSpecifiedVector(featureVector)[i], 3) * weights[i + 4]; //cubic sum
+//        }
+
+        for (int i = 0; i < featureVector.length; i++) {
+            for (int j = 1; j <= power; j++) {
+                sum += Math.pow(input.getSpecifiedVector(featureVector)[i], j) *
+                        weights[i + (featureVector.length * j - featureVector.length)];
+            }
         }
 
         return activation(sum);

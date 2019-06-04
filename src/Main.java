@@ -16,7 +16,7 @@ public class Main {
 
         String[] featureVector = new String[]{"sepal_length", "sepal_width"};
 
-        Perceptron slp = new Perceptron(parsingTarget, featureVector).setMaxEpochs(500000);
+        Perceptron slp = new Perceptron(parsingTarget, featureVector, 3).setMaxEpochs(500000);
 
         slp.train(trainingData);
 
