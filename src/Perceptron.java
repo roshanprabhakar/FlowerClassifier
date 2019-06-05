@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class Perceptron {
 
@@ -15,13 +16,22 @@ public class Perceptron {
 
     private int power;
 
+    private HashMap<String, String> keys;
+    private String[] variables = {"x","y","z"};
+
     //Perceptron for quadratic separation
     //returns boolean value for whether or not a certain flower, eventually link to a bunch of perceptrons
     public Perceptron(String identity, String[] featureVector, int power) {
         this.identity = identity;
         this.featureVector = featureVector;
         this.power = power;
-        weights = new double[featureVector.length * power]; //2 for each feature: 1 for normal 1 for squared
+
+        weights = new double[featureVector.length * power];
+
+        keys = new HashMap<>();
+        for (int i = 0; i < featureVector.length; i++) {
+            keys.put(featureVector[i], variables[i]);
+        }
     }
 
     public void train(ArrayList<FlowerData> trainingData) {
@@ -34,7 +44,7 @@ public class Perceptron {
         }
 
         System.out.println("generated linear separation model: ");
-        System.out.println(weights[0] + "x + " + weights[1] + "y + " + weights[2] + "x^2 + " + weights[3] + "y^2 + " + weights[4] + "x^3 + " + weights[5] + "y^3 + " + threshold + " = 0");
+        System.out.println(getSeparationCurve());
         System.out.println("-------------------");
         System.out.println();
     }
@@ -51,31 +61,31 @@ public class Perceptron {
 
         int error = getCorrectGuess(input.getIdentity()) - guess(input);
 
-//        //adjust weights
-        for (int i = 0; i < 2; i++) { //the linear weights
-            weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i - 0], 1);
-        }
-        for (int i = 2; i < 4; i++) { //the quadratic weights
-            weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i - 2], 2);
-        }
-        for (int i = 4; i < weights.length; i++) { //the cubic weights
-            weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i - 4], 3);
-        }
-
-
-        //adjust generalized weights (needs to be generalized)
-//        for (int i = 0; i < power; i++) {
-//            int counter = 0;
-//            int pow = 1;
-//            for (int j = 0; j < weights.length; i++) {
-//                weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(
-//                        featureVector)[i - (featureVector.length * pow - featureVector.length)], pow);
-//                counter++;
-//                if (counter == featureVector.length) {
-//                    pow++;
-//                }
-//            }
+////        //adjust weights
+//        for (int i = 0; i < 2; i++) { //the linear weights
+//            weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i - 0], 1);
 //        }
+//        for (int i = 2; i < 4; i++) { //the quadratic weights
+//            weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i - 2], 2);
+//        }
+//        for (int i = 4; i < weights.length; i++) { //the cubic weights
+//            weights[i] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i - 4], 3);
+//        }
+
+        //adjusting weights generalized
+        /**
+         * structure of weights = [x,y,x2,y2,x3,y3]
+         * structure of input = [x,y]
+         */
+
+        int pow;
+        for (int i = 0; i < input.getSpecifiedVector(featureVector).length; i++) {
+            pow = 0;
+            for (int j = i; j < weights.length; j += input.getSpecifiedVector(featureVector).length) {
+                pow++;
+                weights[j] += error * learningRate * Math.pow(input.getSpecifiedVector(featureVector)[i], pow);
+            }
+        }
 
     }
 
@@ -145,5 +155,34 @@ public class Perceptron {
             }
         }
         return map;
+    }
+
+    //creates an equation that can be fed into any adequate graphing software
+    public String getSeparationCurve() {
+        StringBuilder equation = new StringBuilder();
+        int weight = 0;
+        for (int pow = 1; pow <= power; pow++) {
+            for (int i = 0; i < featureVector.length; i++) {
+                equation.append(weights[weight] + keys.get(featureVector[i]) + "^" + pow);
+                weight++;
+                if (weight != weights.length) equation.append(" + ");
+            }
+        }
+        equation.append(" = 0");
+
+        //format for Desmos
+
+        String[] equationArray = equation.toString().split("");
+
+        StringBuilder formatted = new StringBuilder();
+        for (int i = 0; i < equationArray.length; i++) {
+            if (equationArray[i].equals("E")) {
+                formatted.append("*10^");
+            } else {
+                formatted.append(equationArray[i]);
+            }
+        }
+
+        return formatted.toString();
     }
 }

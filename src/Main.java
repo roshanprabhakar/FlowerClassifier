@@ -1,10 +1,8 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 public class Main {
 
-    private static String parsingTarget = "Iris-versicolor";
+    private static String parsingTarget = "Iris-setosa";
     private static double percentTraining = 0.9;
 
     public static void main(String[] args) {
@@ -14,9 +12,9 @@ public class Main {
         ArrayList<FlowerData> trainingData = parser.getTrainingData();
         ArrayList<FlowerData> testData = parser.getTestingData();
 
-        String[] featureVector = new String[]{"sepal_length", "sepal_width"};
+        String[] featureVector = {"sepal_length", "sepal_width"};
 
-        Perceptron slp = new Perceptron(parsingTarget, featureVector, 3).setMaxEpochs(500000);
+        Perceptron slp = new Perceptron(parsingTarget, featureVector, 5).setMaxEpochs(5000);
 
         slp.train(trainingData);
 
