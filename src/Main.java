@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    private static String parsingTarget = "Iris-setosa";
+    private static String parsingTarget = "Iris-virginica";
     private static double percentTraining = 0.9;
 
     public static void main(String[] args) {
@@ -14,25 +14,31 @@ public class Main {
 
         String[] featureVector = {"sepal_length", "sepal_width"};
 
-        Perceptron slp = new Perceptron(parsingTarget, featureVector, 5).setMaxEpochs(5000);
-
+        //Creating and testing perceptron
+        Perceptron slp = new Perceptron(parsingTarget, featureVector, 3).setMaxEpochs(5000);
         slp.train(trainingData);
 
+        //Generating Statistics by testing Perceptron
         PerceptronTester tester = new PerceptronTester(slp, testData, parsingTarget);
-
         System.out.println("% accuracy of model: " + tester.getPercentAccuracy());
         for (String line : tester.getStatus()) {
             System.out.println(line);
         }
 
-        System.out.println("Depression map: ");
-        int[][] errorMap = slp.errorMap(0, 0.02, 0, 0.02, 0.0001, testData);
-        for (int[] row : errorMap) {
-            for (int col : row) {
-                System.out.print(generateSpaces(col, 3));
-            }
-            System.out.println();
-        }
+//        //Error curve
+//        System.out.println("Depression map: ");
+//        int[][] errorMap = slp.errorMap(0, 0.02, 0, 0.02, 0.0001, testData);
+//        for (int[] row : errorMap) {
+//            for (int col : row) {
+//                System.out.print(generateSpaces(col, 3));
+//            }
+//            System.out.println();
+//        }
+//        System.out.println();
+//
+//        //Points for google spreadsheets (to copy paste into desmos)
+//        SpreadsheetsAdapter adapter = new SpreadsheetsAdapter(parser.getAllData(), featureVector);
+//        adapter.printData(parsingTarget);
     }
 
     private static String generateSpaces(Integer input, int total) {
