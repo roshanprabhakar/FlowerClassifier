@@ -17,7 +17,7 @@ public class Perceptron {
     private int power;
 
     private HashMap<String, String> keys;
-    private String[] variables = {"x","y","z"};
+    private String[] variables = {"x","y","z","p"};
 
     //Perceptron for quadratic separation
     //returns boolean value for whether or not a certain flower, eventually link to a bunch of perceptrons
@@ -139,22 +139,6 @@ public class Perceptron {
     public Perceptron setMaxEpochs(int maxEpochs) {
         this.maxEpochs = maxEpochs;
         return this;
-    }
-
-    //create an error map to determine the smallest error size, ideal weights
-    public int[][] errorMap(double x1, double x2, double y1, double y2, double increment, ArrayList<FlowerData> testData) {
-        int[][] map = new int[(int)((x2 - x1) / increment)][(int)((y2 - y1) / increment)];
-        for (double r = x1; r < x2; r += increment) {
-            for (double c = y1; c < y2; c += increment) {
-                double[] newWeights = new double[] {r, c};
-                int error = 0;
-                for (FlowerData data : testData) {
-                    error += guess(data, newWeights);
-                }
-                map[(int)((r - x1)/(increment))][(int)((c - y1)/(increment))] = error;
-            }
-        }
-        return map;
     }
 
     //creates an equation that can be fed into any adequate graphing software
