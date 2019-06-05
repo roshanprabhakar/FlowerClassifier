@@ -34,29 +34,33 @@ public class Perceptron {
         }
     }
 
-    public void train(ArrayList<FlowerData> trainingData) {
+    public int train(ArrayList<FlowerData> trainingData) {
 
+        int error = 0;
         for (int i = 0; i < maxEpochs; i++) {
-            for (FlowerData data : trainingData) {
-                train(data);
-            }
             Collections.shuffle(trainingData);
+            for (FlowerData data : trainingData) {
+                error += train(data);
+            }
         }
 
-        System.out.println("generated linear separation model: ");
+        System.out.println("generated linear separation model for weights: " + Arrays.toString(weights));
         System.out.println(getSeparationCurve());
         System.out.println("-------------------");
         System.out.println();
+
+        return error;
     }
 
-    private void train(FlowerData input) {
+    //returns the error
+    private int train(FlowerData input) {
 
         //change the weights;
         //change the threshold;
 
         //check if is correct, if so exit call
         if (guessIsCorrect(guess(input), input)) {
-            return;
+            return 0;
         }
 
         int error = getCorrectGuess(input.getIdentity()) - guess(input);
@@ -87,6 +91,7 @@ public class Perceptron {
             }
         }
 
+        return error;
     }
 
     //guess what feature vector could describe given current weights and threshold
@@ -115,8 +120,11 @@ public class Perceptron {
 
         double sum = 0;
 
-        for (int i = 0; i < input.getSpecifiedVector(featureVector).length; i++) {
-            sum += input.getSpecifiedVector(featureVector)[i] * weights[i];
+        for (int i = 0; i < featureVector.length; i++) {
+            for (int j = 1; j <= power; j++) {
+                sum += Math.pow(input.getSpecifiedVector(featureVector)[i], j) *
+                        weights[i + (featureVector.length * j - featureVector.length)];
+            }
         }
 
         return activation(sum);
@@ -168,5 +176,18 @@ public class Perceptron {
         }
 
         return formatted.toString();
+    }
+
+    public Perceptron setWeights(double[] weights) {
+        this.weights = weights;
+        return this;
+    }
+
+    public double[] getWeights() {
+        return this.weights;
+    }
+
+    public String[] getFeatureVector() {
+        return this.featureVector;
     }
 }

@@ -15,7 +15,7 @@ public class Main {
         String[] featureVector = {"sepal_length", "sepal_width"};
 
         //Creating and testing perceptron
-        Perceptron slp = new Perceptron(parsingTarget, featureVector, 10).setMaxEpochs(5000);
+        Perceptron slp = new Perceptron(parsingTarget, featureVector, 3).setMaxEpochs(5000);
         slp.train(trainingData);
 
         //Generating Statistics by testing Perceptron
@@ -27,7 +27,15 @@ public class Main {
 
         //Points for google spreadsheets (to copy paste into desmos)
         SpreadsheetsAdapter adapter = new SpreadsheetsAdapter(parser.getAllData(), featureVector);
+        System.out.println();
+        System.out.println("Google Sheets Input Points: ");
         adapter.printData(parsingTarget);
+        System.out.println();
+
+        //Error map
+        MapGenerator generator = new MapGenerator(0, 1, 0, 1, 0.5, slp, parser.getAllData());
+        System.out.println("Generated Error Map: ");
+        generator.printMap();
     }
 
     private static String generateSpaces(Integer input, int total) {
