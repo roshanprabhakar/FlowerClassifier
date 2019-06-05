@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    private static String parsingTarget = "Iris-virginica";
+    private static String parsingTarget = "Iris-versicolor";
     private static double percentTraining = 0.9;
 
     public static void main(String[] args) {
@@ -15,7 +15,7 @@ public class Main {
         String[] featureVector = {"sepal_length", "sepal_width"};
 
         //Creating and testing perceptron
-        Perceptron slp = new Perceptron(parsingTarget, featureVector, 3).setMaxEpochs(5000);
+        Perceptron slp = new Perceptron(parsingTarget, featureVector, 5).setMaxEpochs(5000);
         slp.train(trainingData);
 
         //Generating Statistics by testing Perceptron
@@ -25,20 +25,20 @@ public class Main {
             System.out.println(line);
         }
 
-//        //Error curve
-//        System.out.println("Depression map: ");
-//        int[][] errorMap = slp.errorMap(0, 0.02, 0, 0.02, 0.0001, testData);
-//        for (int[] row : errorMap) {
-//            for (int col : row) {
-//                System.out.print(generateSpaces(col, 3));
-//            }
-//            System.out.println();
-//        }
-//        System.out.println();
-//
-//        //Points for google spreadsheets (to copy paste into desmos)
-//        SpreadsheetsAdapter adapter = new SpreadsheetsAdapter(parser.getAllData(), featureVector);
-//        adapter.printData(parsingTarget);
+        //Error curve
+        System.out.println("Depression map: ");
+        int[][] errorMap = slp.errorMap(0, 0.02, 0, 0.02, 0.0001, testData);
+        for (int[] row : errorMap) {
+            for (int col : row) {
+                System.out.print(generateSpaces(col, 3));
+            }
+            System.out.println();
+        }
+        System.out.println();
+
+        //Points for google spreadsheets (to copy paste into desmos)
+        SpreadsheetsAdapter adapter = new SpreadsheetsAdapter(parser.getAllData(), featureVector);
+        adapter.printData(parsingTarget);
     }
 
     private static String generateSpaces(Integer input, int total) {
