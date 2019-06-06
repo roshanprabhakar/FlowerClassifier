@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
 
@@ -15,8 +16,10 @@ public class Main {
         String[] featureVector = {"sepal_length", "sepal_width"};
 
         //Creating and testing perceptron
-        Perceptron slp = new Perceptron(parsingTarget, featureVector, 3).setMaxEpochs(5000);
-        slp.train(trainingData);
+        Perceptron slp = new Perceptron(parsingTarget, featureVector, 3).setMaxEpochs(50000);
+        System.out.println("separation model for given data: ");
+        System.out.println(slp.train(trainingData).getEquation());
+        System.out.println();
 
         //Generating Statistics by testing Perceptron
         PerceptronTester tester = new PerceptronTester(slp, testData, parsingTarget);
@@ -33,7 +36,7 @@ public class Main {
         System.out.println();
 
         //Error map
-        MapGenerator generator = new MapGenerator(0, 1, 0, 1, 0.5, slp, parser.getAllData());
+        MapGenerator generator = new MapGenerator(0, 1, 0, 1, 0.2, slp, parser.getAllData());
         System.out.println("Generated Error Map: ");
         generator.printMap();
     }

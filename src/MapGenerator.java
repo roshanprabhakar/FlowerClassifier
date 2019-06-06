@@ -15,7 +15,7 @@ public class MapGenerator {
 
         for (double r = x1; r < x2; r+= increment) {
             for (double c = y1; c < y2; c += increment) {
-                map[(int)((r - x1)/increment)][(int)((c - y1)/increment)] = Math.abs(perceptron.train(flowerData));
+                map[(int)((r - x1)/increment)][(int)((c - y1)/increment)] = Math.abs(perceptron.train(flowerData).getError());
             }
         }
     }

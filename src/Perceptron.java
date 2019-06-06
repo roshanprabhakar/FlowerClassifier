@@ -34,7 +34,7 @@ public class Perceptron {
         }
     }
 
-    public int train(ArrayList<FlowerData> trainingData) {
+    public PerceptronOutput train(ArrayList<FlowerData> trainingData) {
 
         int error = 0;
         for (int i = 0; i < maxEpochs; i++) {
@@ -44,12 +44,7 @@ public class Perceptron {
             }
         }
 
-        System.out.println("generated linear separation model for weights: " + Arrays.toString(weights));
-        System.out.println(getSeparationCurve());
-        System.out.println("-------------------");
-        System.out.println();
-
-        return error;
+        return new PerceptronOutput().setEquation(getSeparationCurve()).setError(error);
     }
 
     //returns the error
@@ -105,20 +100,6 @@ public class Perceptron {
 //            sum += Math.pow(input.getSpecifiedVector(featureVector)[i], 2) * weights[i + 2]; //quadratic sum
 //            sum += Math.pow(input.getSpecifiedVector(featureVector)[i], 3) * weights[i + 4]; //cubic sum
 //        }
-
-        for (int i = 0; i < featureVector.length; i++) {
-            for (int j = 1; j <= power; j++) {
-                sum += Math.pow(input.getSpecifiedVector(featureVector)[i], j) *
-                        weights[i + (featureVector.length * j - featureVector.length)];
-            }
-        }
-
-        return activation(sum);
-    }
-
-    private int guess(FlowerData input, double[] weights) {
-
-        double sum = 0;
 
         for (int i = 0; i < featureVector.length; i++) {
             for (int j = 1; j <= power; j++) {
