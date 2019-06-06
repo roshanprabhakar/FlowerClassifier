@@ -16,7 +16,7 @@ public class Main {
         String[] featureVector = {"sepal_length", "sepal_width"};
 
         //Creating and testing perceptron
-        Perceptron slp = new Perceptron(parsingTarget, featureVector, 3).setMaxEpochs(50000);
+        Perceptron slp = new Perceptron(parsingTarget, featureVector, 4).setMaxEpochs(5000);
         System.out.println("separation model for given data: ");
         System.out.println(slp.train(trainingData).getEquation());
         System.out.println();
