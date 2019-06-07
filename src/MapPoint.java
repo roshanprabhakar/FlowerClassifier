@@ -37,6 +37,6 @@ public class MapPoint {
     }
 
     public String toString() {
-        return "(" + x + ", " + y + ", " + value + ")";
+        return "Point({" + x + ", " + y + ", " + value + "})";
     }
 }

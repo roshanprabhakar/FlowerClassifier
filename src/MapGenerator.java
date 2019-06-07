@@ -53,6 +53,15 @@ public class MapGenerator {
         }
     }
 
+    //points to feed into Geogebra
+    public void printPoints() {
+        for (MapPoint[] row : map) {
+            for (MapPoint point : row) {
+                System.out.println(point + ", ");
+            }
+        }
+    }
+
     public double getIncrement() {
         return this.increment;
     }
