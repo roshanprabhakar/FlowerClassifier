@@ -31,13 +31,13 @@ public class Main {
         //Points for google spreadsheets (to copy paste into desmos)
         SpreadsheetsAdapter adapter = new SpreadsheetsAdapter(parser.getAllData(), featureVector);
         System.out.println();
-        System.out.println("Google Sheets Input Points: ");
+        System.out.println("Google Sheets Input Points for target: ");
         adapter.printData(parsingTarget);
         System.out.println();
 
         //Error map
         MapGenerator generator = new MapGenerator(0, 1, 0, 1, 0.2, slp, parser.getAllData());
-        System.out.println("Generated Error Map: ");
+        System.out.println("Generated Error Map for increment (" + generator.getIncrement() + "): ");
         generator.printMap();
     }
 
